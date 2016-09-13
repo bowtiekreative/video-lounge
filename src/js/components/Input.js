@@ -31,6 +31,7 @@ class ChatInput extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if(nextProps.blurChat === this.props.blurChat){ return }
     if (nextProps.blurChat) {
       this.refs.textarea.blur();
     } else if (!nextProps.blurChat) {
