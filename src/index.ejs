@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat:400,700" rel="stylesheet">
+  <title></title>
+  <style type="text/css">
+    .initial-load-container {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background: #000000;
+    }
+    .loader {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -50px;
+      margin-top: -50px;
+      width: 100px;
+      text-align: center;
+      font-size: 1.2em;
+      color: #555;
+    }
+    .circle1 {
+      -webkit-animation: bounce linear 2.2s infinite forwards;
+      animation: bounce linear 2.2s infinite forwards;
+      -webkit-animation-delay: 0;
+      animation-delay: 0;
+    }
+    .circle2 {
+      -webkit-animation: bounce linear 2.2s infinite forwards;
+      animation: bounce linear 2.2s infinite forwards;
+      -webkit-animation-delay: 125ms;
+      animation-delay: 125ms;
+    }
+    .circle3 {
+      -webkit-animation: bounce linear 2.2s infinite forwards;
+      animation: bounce linear 2.2s infinite forwards;
+      -webkit-animation-delay: 250ms;
+      animation-delay: 250ms;
+    }
+    .circle4 {
+      -webkit-animation: bounce linear 2.2s infinite forwards;
+      animation: bounce linear 2.2s infinite forwards;
+      -webkit-animation-delay: 0.375s;
+      animation-delay: 0.375s;
+    }
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      20%, 50% {
+        transform: translateY(9px);
+      }
+      80% {
+        transform: translateY(2px)
+      }
+      40% {
+        transform: translateY(-15px);
+      }
+      60% {
+        transform: translateY(-7px);
+      }
+    }
+  </style>
+</head>
+<body>
+<script>
+  (function(_b,e,b,o){_b.Bebo={b:[],onReady:function(cb){this.b.push(cb)}}
+    var l = _b.location.host;
+    o = o.replace('{d}',l.indexOf('widgets') > -1 ? l : 'widgets.blab-dev.im');
+    var s=e.createElement(b);s.async=1;s.src=o;
+    var x=e.getElementsByTagName(b)[0];x.parentNode.insertBefore(s,x);})
+  (window,document,'script','https://{d}/bebo.min.js?v=<%= htmlWebpackPlugin.options.version %>');
+</script>
+<div id="app">
+  <div class="initial-load-container">
+    <div class="loader">
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 81 45" enable-background="new 0 0 81 45" xml:space="preserve">
+        <circle class="circle1" fill="#fe1263" cx="13.5" cy="22.5" r="4.5"/>
+        <circle class="circle2" fill="#fe1263" cx="31.5" cy="22.5" r="4.5"/>
+        <circle class="circle3" fill="#fe1263" cx="49.5" cy="22.5" r="4.5"/>
+        <circle class="circle4" fill="#fe1263" cx="67.5" cy="22.5" r="4.5"/>
+      </svg>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js" async="true"></script>
+<!--
+  This HTML file is a template.
+  If you open it directly in the browser, you will see an empty page.
+
+  You can add webfonts, meta tags, or analytics to this file.
+  The build step will place the bundled scripts into the <body> tag.
+
+  To begin the development, run `npm start` in this folder.
+  To create a production bundle, use `npm run build`.
+-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-78647206-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>
+
