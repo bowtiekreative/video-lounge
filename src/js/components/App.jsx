@@ -95,17 +95,18 @@ class App extends React.Component {
     if(this.state.share){
       return (
         <div id='notify-er' className='Aligner'>
+          <div className="half">
             <div className="twitter button-big Aligner-item" onClick={()=>{
               this.setState({share: false});
               Bebo.Share.twitter("I'm hanging out in the Video Lounge!");
             }}>
               <i className="fa fa-twitter"></i>
             </div>
-            <div className="facebook button-big Aligner-item" onClick={()=>{
+            <div className="wa button-big Aligner-item" onClick={()=>{
               this.setState({share: false});
-              Bebo.Share.facebook("I'm hanging out in the Video Lounge!");
+              Bebo.Share.whatsapp("I'm hanging out in the Video Lounge!");
             }}>
-              <i className="fa fa-facebook"></i>
+              <i className="fa fa-whatsapp"></i>
             </div>
           <div className="sms button-big Aligner-item" onClick={()=>{
             this.setState({share: false});
@@ -113,12 +114,13 @@ class App extends React.Component {
           }}>
             <i className="fa fa-comment"></i>
           </div>
-          <div className="sms button-big Aligner-item" onClick={()=>{
+          <div className="close button-big Aligner-item" onClick={()=>{
             this.setState({share: false});
           }}>
             <i className="fa fa-times"></i>
           </div>
-        </div>
+          </div>
+          </div>
       )
     }
     return null;
