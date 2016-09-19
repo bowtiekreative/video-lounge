@@ -14,7 +14,8 @@ class App extends React.Component {
       hasCalledIn: false,
       blurInput: true,
       share: false,
-      messages: []
+      messages: [],
+      share_text: "Join me in the Video Lounge"
     };
 
     this.callInHangUp = this.callInHangUp.bind(this);
@@ -91,39 +92,26 @@ class App extends React.Component {
     this.setState({background:'blue'});
   }
 
+  toggleShare(){
+    this.state.share = !this.state.share;
+  }
+
   renderShare() {
-    if(this.state.share){
+    if(!this.state.share){
       return (
-        <div id='notify-er' className='Aligner'>
-          <div className="half">
-            <div className="twitter button-big Aligner-item" onClick={()=>{
-              this.setState({share: false});
-              Bebo.Share.twitter("I'm hanging out in the Video Lounge!");
-            }}>
-              <i className="fa fa-twitter"></i>
-            </div>
-            <div className="wa button-big Aligner-item" onClick={()=>{
-              this.setState({share: false});
-              Bebo.Share.whatsapp("I'm hanging out in the Video Lounge!");
-            }}>
-              <i className="fa fa-whatsapp"></i>
-            </div>
-          <div className="sms button-big Aligner-item" onClick={()=>{
-            this.setState({share: false});
-            Bebo.Share.sms("I'm hanging out in the Video Lounge!");
-          }}>
-            <i className="fa fa-comment"></i>
+        <div className="share-container">
+          <div className="share fa-2x" onClick={this.toggleShare()}>
           </div>
-          <div className="close button-big Aligner-item" onClick={()=>{
-            this.setState({share: false});
-          }}>
-            <i className="fa fa-times"></i>
-          </div>
-          </div>
-          </div>
-      )
+        </div>);
     }
-    return null;
+    return (
+        <div className="share-container">
+        <div className="share active fa-2x" onClick={this.toggleShare()}>
+        <div className="fab active" onClick={(e)=>{e.stopPropagation(); Bebo.Share.sms(this.state.share_text);}}><i className="fa fa-comment-o fa-inverse" aria-hidden="true"></i></div>
+        <div className="fab active" onClick={(e)=>{e.stopPropagation(); Bebo.Share.twitter(this.state.share_text);}}><i className="fa fa-twitter fa-inverse" aria-hidden="true"></i></div>
+        <div className="fab active" onClick={(e)=>{e.stopPropagation(); Bebo.Share.whatsapp(this.state.share_text);}}><i className="fa fa-whatsapp fa-inverse" aria-hidden="true"></i></div>
+        </div>
+        </div>);
   }
 
   renderEmpty() {
