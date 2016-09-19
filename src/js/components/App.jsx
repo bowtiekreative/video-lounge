@@ -100,7 +100,7 @@ class App extends React.Component {
     if(!this.state.share){
       return (
         <div className="share-container">
-          <div className="share fa-2x" onClick={this.toggleShare}></div>
+          <div className="share" onClick={this.toggleShare}></div>
         </div>);
     }
     return (
