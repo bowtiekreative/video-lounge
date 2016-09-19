@@ -493,7 +493,7 @@ $t: .3s;
     will-change: transform;
   }
   &:before {
-    background: url(http://goo.gl/dVG3Fd) center/28px no-repeat;
+    background: url(assets/ic_add_black_48px.svg) center/28px no-repeat;
     z-index: 5;
     transition: $t;
   }
@@ -543,6 +543,7 @@ $t: .3s;
   }
   &:nth-child(3) { // whatsapp
     background-color:#43d854;
+    top:0px;
     i{
       position:absolute;
       left: 50%;
