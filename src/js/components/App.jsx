@@ -13,6 +13,7 @@ class App extends React.Component {
       calledIn: false,
       hasCalledIn: false,
       blurInput: true,
+      share: false,
       messages: []
     };
 
@@ -76,7 +77,7 @@ class App extends React.Component {
   callInHangUp() {
     console.log('toad', this.state.calledIn);
     if(!this.state.calledIn){
-      this.setState({calledIn: true, hasCalledIn: true});
+      this.setState({calledIn: true, hasCalledIn: true, share: true});
       Bebo.callin(true, true);
       this.notifyServer();
     } else {
@@ -88,6 +89,23 @@ class App extends React.Component {
   parentClick() {
     console.log('click');
     this.setState({background:'blue'});
+  }
+
+  renderShare() {
+    if(this.state.share){
+      return (
+        <div id='notify-er' className='Aligner'>
+          <div id='notify-dialog' className='Aligner-item'>
+            <div className='notify-text Aligner-item'>tell friends</div>
+            <button id='done' className='done-btn Aligner-item' onClick={()=>{
+              this.setState({share: false});
+              Bebo.Share.sms("I'm hanging out in the Video Lounge!");
+            }}>SMS</button>
+          </div>
+        </div>
+      )
+    }
+    return null;
   }
 
   renderEmpty() {
@@ -133,6 +151,7 @@ class App extends React.Component {
         {this.renderEmpty()}
         {this.renderChat()}
         {this.renderMessages()}
+        {this.renderShare()}
       </div>
     );
   }
