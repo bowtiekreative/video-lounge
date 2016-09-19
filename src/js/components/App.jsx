@@ -102,6 +102,7 @@ class App extends React.Component {
         <div className="share-container">
           <div className="share" onClick={this.toggleShare}></div>
         </div>);
+
     }
     return (
         <div className="share-container">
