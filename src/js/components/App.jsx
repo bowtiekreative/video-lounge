@@ -95,12 +95,28 @@ class App extends React.Component {
     if(this.state.share){
       return (
         <div id='notify-er' className='Aligner'>
-          <div id='notify-dialog' className='Aligner-item'>
-            <div className='notify-text Aligner-item'>tell friends</div>
-            <button id='done' className='done-btn Aligner-item' onClick={()=>{
+            <div className="twitter button-big Aligner-item" onClick={()=>{
               this.setState({share: false});
-              Bebo.Share.sms("I'm hanging out in the Video Lounge!");
-            }}>SMS</button>
+              Bebo.Share.twitter("I'm hanging out in the Video Lounge!");
+            }}>
+              <i className="fa fa-twitter"></i>
+            </div>
+            <div className="facebook button-big Aligner-item" onClick={()=>{
+              this.setState({share: false});
+              Bebo.Share.facebook("I'm hanging out in the Video Lounge!");
+            }}>
+              <i className="fa fa-facebook"></i>
+            </div>
+          <div className="sms button-big Aligner-item" onClick={()=>{
+            this.setState({share: false});
+            Bebo.Share.sms("I'm hanging out in the Video Lounge!");
+          }}>
+            <i className="fa fa-comment"></i>
+          </div>
+          <div className="sms button-big Aligner-item" onClick={()=>{
+            this.setState({share: false});
+          }}>
+            <i className="fa fa-times"></i>
           </div>
         </div>
       )
