@@ -1,14 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import BeboReact from 'bebo-react';
 import App from './js/components/App.jsx';
 
 import './style.scss';
-// eslint-disable-next-line
-Bebo.onReady(() => {
-  // eslint-disable-next-line
-  Bebo.UI.disableKeyboardDoneStrip();
-  ReactDOM.render(
-    <App />,
-    document.getElementById('app')
-  );
-});
+BeboReact.render(
+  <App />,
+  document.getElementById('app'),
+  {disableKeyboardDoneStrip: true}
+);

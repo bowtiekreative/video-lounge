@@ -1,5 +1,6 @@
 import React from 'react';
 import Input from './Input';
+import {withBebo} from 'bebo-react';
 
 class App extends React.Component {
 
@@ -36,7 +37,7 @@ class App extends React.Component {
   }
 
   handleEvents() {
-    Bebo.onEvent((data) => {
+    this.props.bebo.onEvent((data) => {
       console.log('data', data);
       this.handleMessage(data);
     });
@@ -55,13 +56,13 @@ class App extends React.Component {
 
   handleCallerChanges() {
     let _this = this;
-    Bebo.onCallUpdate((data) => {
+    this.props.bebo.onCallUpdate((data) => {
       _this.setState({callersList: data, callersCount: data ? data.length: 0});
     });
   }
 
   notifyer(message) {
-    const prom = Bebo.Notification.roster('{{{user.username}}}', message);
+    const prom = this.props.bebo.Notification.roster('{{{user.username}}}', message);
     prom.then(function(){
       console.log('notified - ', message);
     });
@@ -79,11 +80,11 @@ class App extends React.Component {
     console.log('toad', this.state.calledIn);
     if(!this.state.calledIn){
       this.setState({calledIn: true, hasCalledIn: true});
-      Bebo.callin(true, true);
+      this.props.bebo.callin(true, true);
       this.notifyServer();
     } else {
       this.setState({calledIn: false});
-      Bebo.hangup();
+      this.props.bebo.hangup();
     }
   }
 
@@ -107,9 +108,9 @@ class App extends React.Component {
     return (
         <div className="share-container">
           <div className="share active fa-2x" onClick={this.toggleShare}>
-          <div className="fab active" onClick={(e)=>{e.stopPropagation(); Bebo.Share.sms(this.state.share_text);}}><i className="fa fa-comment-o fa-inverse" aria-hidden="true"></i></div>
-          <div className="fab active" onClick={(e)=>{e.stopPropagation(); Bebo.Share.twitter(this.state.share_text);}}><i className="fa fa-twitter fa-inverse" aria-hidden="true"></i></div>
-          <div className="fab active" onClick={(e)=>{e.stopPropagation(); Bebo.Share.whatsapp(this.state.share_text);}}><i className="fa fa-whatsapp fa-inverse" aria-hidden="true"></i></div>
+          <div className="fab active" onClick={(e)=>{e.stopPropagation(); this.props.bebo.Share.sms(this.state.share_text);}}><i className="fa fa-comment-o fa-inverse" aria-hidden="true"></i></div>
+          <div className="fab active" onClick={(e)=>{e.stopPropagation(); this.props.bebo.Share.twitter(this.state.share_text);}}><i className="fa fa-twitter fa-inverse" aria-hidden="true"></i></div>
+          <div className="fab active" onClick={(e)=>{e.stopPropagation(); this.props.bebo.Share.whatsapp(this.state.share_text);}}><i className="fa fa-whatsapp fa-inverse" aria-hidden="true"></i></div>
           </div>
         </div>);
   }
@@ -170,4 +171,4 @@ App.displayName = 'App';
 // App.propTypes = {};
 // App.defaultProps = {};
 
-export default App;
+export default withBebo(App);

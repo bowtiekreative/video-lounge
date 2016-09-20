@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../assets/_chat-input.scss';
+import {withBebo} from 'bebo-react';
 
 class ChatInput extends React.Component {
 
@@ -20,8 +21,7 @@ class ChatInput extends React.Component {
   }
 
   componentWillMount() {
-    // eslint-disable-next-line
-    Bebo.User.getUser('me', (err, data) => {
+    this.props.bebo.User.getUser('me', (err, data) => {
       this.setState({ user: data });
     });
   }
@@ -81,8 +81,7 @@ class ChatInput extends React.Component {
     this.setState({ messageText: '' });
   }
   broadcastChat(m) {
-    // eslint-disable-next-line
-    Bebo.emitEvent({ type: 'chat_sent', message: m });
+    this.props.bebo.emitEvent({ type: 'chat_sent', message: m });
     // TODO check if any user is in str
   }
 
@@ -142,4 +141,4 @@ ChatInput.propTypes = {
 };
 // ChatInput.defaultProps = {};
 
-export default ChatInput;
+export default withBebo(ChatInput);
