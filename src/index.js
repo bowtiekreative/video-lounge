@@ -6,5 +6,5 @@ import './style.scss';
 BeboReact.render(
   <App />,
   document.getElementById('app'),
-  {disableKeyboardDoneStrip: true}
+  {disableKeyboardDoneStrip: true, disableAudio: true}
 );
