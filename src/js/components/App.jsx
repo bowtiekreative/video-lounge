@@ -25,6 +25,8 @@ class App extends React.Component {
     this.handleMessage = this.handleMessage.bind(this);
     this.handleEvents = this.handleEvents.bind(this);
     this.toggleShare = this.toggleShare.bind(this);
+
+    this.props.Bebo.liveVideoOn();
   }
 
   componentWillMount() {
