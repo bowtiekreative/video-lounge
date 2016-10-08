@@ -157,7 +157,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app-layer" onClick={this.blurInput}>
-        // {this.renderEmpty()}
+        {this.renderEmpty()}
         {this.renderChat()}
         {this.renderMessages()}
         {this.renderShare()}
