@@ -72,9 +72,9 @@ class App extends React.Component {
 
   notifyServer() {
     if(this.state.callersCount >= 2 && !this.state.hasCalledIn){
-      this.notifyer('is chilling in the video lounge');
+      this.notifyer('is on video NOW');
     } else if(!this.state.hasCalledIn) {
-      this.notifyer('is lonely in the video lounge...');
+      this.notifyer('is on video NOW');
     }
   }
 
