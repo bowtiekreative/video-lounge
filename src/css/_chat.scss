@@ -1,0 +1,58 @@
+//////////////////////////////////////////////////////////////////////////////////////////
+// CHAT
+
+.messages-list {
+  @extend .flex-column;
+  flex: 1 1 auto;
+  overflow: hidden;
+  justify-content: flex-end;
+  max-width: calc-em(500px);
+  margin-right: calc-em(80px);
+}
+
+.message {
+  @extend .flex-row;
+  flex: 0 1 auto;
+  align-items: flex-start;
+  margin: calc-em(24px) 0 calc-em(5px) calc-em(15px);
+}
+
+.message-avatar {
+  display: block;
+  width: calc-em(36px);
+  height: calc-em(36px);
+  background-color: $color-grey2;
+  border-radius: 50%;
+  background-position:center;
+  background-size: cover;
+}
+
+.message-right {
+  flex: 0 1 auto;
+  background: transparentize($color-white, 0.5);
+  text-align: left;
+  margin-left: calc-em(8px);
+  border-radius: 16px;
+  padding: calc-em(6px) calc-em(12px);
+  position: relative;
+  min-height: calc-em(36px);
+  @extend .flex-row;
+}
+
+.message-username {
+  color: $color-black;
+  display: block;
+  font-family: $font-family-alt;
+  color: transparentize($color-white, 0.2);
+  position: absolute;
+  top: calc-em(-21px);
+  left: calc-em(10px);
+  @extend .font-size-small;
+}
+
+.message-text {
+  flex: 1 1 auto;
+  color: $color-black;
+  display: inline;
+  font-family: $font-family-alt;
+}

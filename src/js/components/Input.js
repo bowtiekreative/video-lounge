@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../assets/_chat-input.scss';
 import {withBebo} from 'bebo-react';
 
 class ChatInput extends React.Component {
@@ -97,38 +96,43 @@ class ChatInput extends React.Component {
 
   calculateSendBtnStyle() {
     if(this.state.messageText.length) {
-      return {transform: 'translateX(0)'}
+      return {transform: 'translateX(15px)'}
+    }
+    return {}
+  }
+
+  calculateCallBtnStyle() {
+    if(this.state.messageText.length) {
+      return {transform: 'translateX(150px)'}
     }
     return {}
   }
 
   renderActions() {
-    return (<div className="chat-input--actions">
-      <button className="chat-input--actions--item caller-btn" onClick={this.props.callInHangUp}>
-
+    return (<div className="controls-action" style={this.calculateCallBtnStyle()}>
+      <button className={`chat-input--actions--item call-btn ${this.props.calledIn ? 'hangup' : '' }` } onClick={this.props.callInHangUp}>
       </button>
     </div>);
   }
 
   render() {
-    return (<div className="chat-input" style={this.state.mode === 'gif' ? { transform: 'translate3d(0,-100vh, 0' } : {}}>
-      <div className="chat-input--left">
-        {this.renderActions()}
-      </div>
-      <div className="chat-input--middle">
+    return (<div className="controls">
+
+      <div className="controls-chat">
         <input
           type="text"
           onFocus={this.handleInputFocus}
           onBlur={this.handleInputBlur}
           ref="textarea"
-          placeholder="type a message.."
+          placeholder="type a message..."
           onChange={this.handleInputChange}
           value={this.state.messageText}
         />
-        <div onTouchStart={this.handleSendChat} className="send-button" style={this.calculateSendBtnStyle()}>
-          <span>Send</span>
+        <div onTouchStart={this.handleSendChat} className="send-btn" style={this.calculateSendBtnStyle()}>
+          Send
         </div>
       </div>
+      {this.renderActions()}
     </div>);
   }
 }

@@ -1,0 +1,99 @@
+//////////////////////////////////////////////////////////////////////////////////////////
+// CONTROLS
+
+.controls {
+  z-index: 1000;
+  @extend .flex-row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// VIDEO CONTROLS
+
+.controls-action {
+  display: block;
+  flex: 0 0 auto;
+  margin: calc-em(15px) calc-em(15px);
+  @extend .flex-column;
+  justify-content: flex-end;
+  transition: transform 200ms ease-in-out;
+}
+
+.call-btn {
+  display: block;
+  width: calc-em(50px);
+  height: calc-em(50px);
+  border-radius:50%;
+  background-color: $color-bright-green;
+  background-image: url(./assets/img/icVideo@2x.png);
+  background-size: calc-em(24px) calc-em(16px);
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: background-color 200ms ease-in-out;
+  &.hangup {
+    background-color: $color-red;
+    background-image: url(./assets/img/icEndCall@2x.png);
+    background-size: calc-em(24px) calc-em(9px);
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// CHAT CONTROLS
+
+.controls-chat {
+  flex: 1 1 auto;
+  margin: calc-em(15px) 0 calc-em(15px) calc-em(15px);
+  max-width: calc-em(500px);
+  @extend .flex-row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.controls-chat input {
+  @extend .font-size-default;
+  font-family: $font-family-alt;
+  flex: 0 0 auto;
+  background-color:rgba(255,255,255,0.5);
+  border:none;
+  border-radius: 16px;
+  min-height: calc-em(50px);
+  width: 100%;
+  padding: calc-em(12px) calc-em(15px);
+  color: $color-black;
+  resize: none;
+  display: block;
+  &::-webkit-input-placeholder {
+     color: $color-black;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+     color: $color-black;
+  }
+  &::-moz-placeholder {  /* Firefox 19+ */
+     color: $color-black;
+  }
+  &:-ms-input-placeholder {
+     color: $color-black;
+  }
+}
+
+.controls--chat--inner--input--fake {
+  color: $color-black;
+  @extend .font-size-default;
+}
+
+.send-btn {
+  @extend .flex-center;
+  @extend .font-size-default;
+  text-transform: uppercase;
+  color: $color-bright-green;
+  font-weight: 700;
+  border-radius: 8px;
+  height: calc-em(50px);
+  transition: all .2s ease;
+  transform: translateX(calc-em(100px));
+  width: calc-em(50px);
+  @include r_min($break-tablet-s) {
+    display: none;
+  }
+}

@@ -1,0 +1,175 @@
+//////////////////////////////////////////////////////////////////////////////////////////
+// VIDEO STYLES
+
+#fist-participant {
+  max-width: 90%;
+}
+
+.action-text {
+  font-size: calc-em(36px);
+  text-align: center;
+  color: white;
+  margin-bottom: .1em;
+}
+
+.action-arrow {
+  width: 100%;
+  background: url('./assets/down-arrow.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size: 1.8em;
+  height: 6em;
+}
+
+.chat-container {
+  width: 80%;
+  left: 5%;
+  bottom: 5%;
+}
+
+.chat-icon {
+  height: 2.2em;
+  width: 2.2em;
+  top: 0;
+  left: 0;
+  position: fixed;
+  color: gray;
+}
+
+.chat-bubble {
+  width: 80%;
+  left: 2.3em;
+}
+
+.chat-text {
+  color: gray;
+  width: 90%;
+  height: 90%;
+  left: 5%;
+  bottom: 5%;
+  position: fixed;
+}
+
+.chat-username {
+  color: black;
+}
+
+.camera-btn {
+  background-image: url('./assets/camera.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size: 2.8em;
+  background-color: #1EC173;
+  border-radius: 5px;
+  width: 16em;
+  height: 4em;
+}
+
+.caller-btn {
+  background-image: url('./assets/camera.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size: 2.2em;
+  background-color: #1EC173;
+  border-radius: 8px;
+  width: 4em;
+  height: 3.5em;
+  position: fixed;
+  bottom: 3px;
+  right: 0;
+}
+
+input.chat {
+  background-color: rgba(0, 0, 0, 0);
+  position: fixed;
+  bottom: -10px;
+  height: 3.6em;
+  width: 100%;
+  border: none;
+  color: white;
+  font-size: 15px;
+}
+
+#notify-dialog {
+  background-color: white;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 90%;
+}
+
+.notify-text {
+  margin-top: .1em;
+  text-align: center;
+  width: 100%;
+  color: #1EC173;
+  font-size: 2em;
+}
+
+.done-btn {
+  color: white;
+  font-size: 2em;
+  background-color: #1EC173;
+  border-radius: 8px;
+  width: 95%;
+  height: 1.8em;
+  margin-left: 2.5%;
+  margin-bottom: 10px;
+}
+
+input.notify-input {
+  transition: all 0.3s cubic-bezier(.64,.09,.08,1);
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, black 4%);
+  margin: 10% 10% 10% 10%;
+  width: 80%;
+  display: block;
+  border: none;
+  padding: 10px 10px 0px 0px;
+  border-bottom: solid 1px black;
+  &:focus, &:valid {
+    box-shadow: none;
+    outline: none;
+    background-position: 0 0;
+    &::-webkit-input-placeholder {
+      color: #1EC173;
+      font-size: 11px;
+      transform: translateY(-20px);
+      visibility: visible !important;
+    }
+  }
+}
+
+.emblem {
+  position: absolute;
+  right: 0;
+  top: 5vh;
+  margin: 0 auto;
+  width: 20vh;
+  height: 20vh;
+  border-radius: 50%;
+  font-weight: bold;
+  color: #fffbee;
+  animation: spinZ 20s linear infinite;
+  text-align: center;
+  background:  rgba(255,255,255,.08);
+
+  span {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-transform: uppercase;
+    font-size: 2.5vh;
+    transition: all .5s cubic-bezier(0,0,0,1);
+  }
+
+  @keyframes spinZ {
+    0% {
+      transform: rotateZ(360deg);
+    }
+    100% {
+      transform: rotateZ(0deg);
+    }
+  }
+}

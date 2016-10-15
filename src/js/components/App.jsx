@@ -45,13 +45,14 @@ class App extends React.Component {
     });
   }
 
-  handleMessage(message) {
+  handleMessage(m) {
+    let message = m;
     const messages = this.state.messages;
     messages.push(message.message);
     this.setState({messages});
-    console.log(messages);
+    console.log(message);
     setTimeout(() => {
-      this.setState({messages: messages.filter((m)=> m.timestamp !== message.message.timestamp)
+      this.setState({messages: this.state.messages.filter((m)=> m.timestamp !== message.message.timestamp)
       })
     }, 4500)
   }
@@ -119,17 +120,20 @@ class App extends React.Component {
 
   renderEmpty() {
     if(this.state.callersCount !== 0){ return null }
-    return <div id='empty-state' className='Aligner'>
-      <div id='fist-participant' className='Aligner-item'>
-        <div className='action-text Aligner-item'>take a seat</div>
-        <div className='action-arrow Aligner-item'></div>
-        <button id='camera' className='camera-btn' onClick={this.callInHangUp}/>
+    return <div id='empty-state' className='landing'>
+      <div className="landing-text">
+        <h1>video<strong>lounge</strong></h1>
+        <p>8 way facetime</p>
+        <button id='camera' className='big-call-btn camera-btn' onClick={this.callInHangUp}></button>
+      </div>
+      <div className="notify-container">
+        <p>Notify the group when I call in</p>
       </div>
     </div>
   }
 
   renderChat() {
-    return <Input setChatInputState={this.blurInput} blurChat={this.state.blurInput} callInHangUp={this.callInHangUp}/>;
+    return <Input calledIn={this.state.calledIn} setChatInputState={this.blurInput} blurChat={this.state.blurInput} callInHangUp={this.callInHangUp}/>;
   }
 
   renderMessages() {
@@ -137,18 +141,14 @@ class App extends React.Component {
       return null
     }
     return this.state.messages.map((message,i) =>{
-      return (<div key={i} className='message animate-out'>
-        <div className='message--inner'>
-          <div className='message--inner--left'>
-            <div className='message--avatar' style={{backgroundImage: `url(${message.userImg})`}}></div>
-        </div>
-        <div className='message--inner--right'>
-          <div className='message--content'>
-            <div className='message--content--username'> {message.username} </div>
-            <div className='message--content--text'> {message.message} </div>
+      return (<div key={i} className='message'>
+          <div className='message-left'>
+            <div className='message-avatar' style={{backgroundImage: `url(${message.userImg})`}}></div>
           </div>
-        </div>
-      </div>
+          <div className='message-right'>
+            <div className='message-username'> {message.username} </div>
+            <div className='message-text'> {message.message} </div>
+          </div>
         </div>
         );
     })
@@ -158,8 +158,12 @@ class App extends React.Component {
     return (
       <div className="app-layer" onClick={this.blurInput}>
         {this.renderEmpty()}
+        <div className="content-container">
         {this.renderChat()}
-        {this.renderMessages()}
+        <ul className="messages-list">
+          {this.renderMessages()}
+        </ul>
+        </div>
         {this.renderShare()}
       </div>
     );
