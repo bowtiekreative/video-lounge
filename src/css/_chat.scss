@@ -12,7 +12,7 @@
 
 .message {
   @extend .flex-row;
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   align-items: flex-start;
   margin: calc-em(24px) 0 calc-em(5px) calc-em(15px);
 }
