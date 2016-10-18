@@ -54,7 +54,7 @@ class App extends React.Component {
     setTimeout(() => {
       this.setState({messages: this.state.messages.filter((m)=> m.timestamp !== message.message.timestamp)
       })
-    }, 6000)
+    }, 18000)
   }
 
   handleCallerChanges() {
