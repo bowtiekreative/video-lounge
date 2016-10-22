@@ -15,7 +15,7 @@
   display: block;
   flex: 0 0 auto;
   margin: calc-em(15px) calc-em(15px);
-  @extend .flex-column;
+  @extend .flex-row;
   justify-content: flex-end;
   transition: transform 200ms ease-in-out;
 }
@@ -34,6 +34,23 @@
   &.hangup {
     background-color: $color-red;
     background-image: url(./assets/img/icEndCall@2x.png);
+    background-size: calc-em(24px) calc-em(9px);
+  }
+}
+
+.mute-btn {
+  display: block;
+  width: calc-em(50px);
+  height: calc-em(50px);
+  border-radius:50%;
+  background-color: white;
+  background-image: url(./assets/img/mute.png);
+  background-size: calc-em(24px) calc-em(16px);
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: background-color 200ms ease-in-out;
+  &.muted {
+    background-color: $color-red;
     background-size: calc-em(24px) calc-em(9px);
   }
 }
